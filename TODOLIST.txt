@@ -1,0 +1,8 @@
+Tasks:
+
+1. stucts for players and slots - attribute values
+2. creation of players
+3. assignment of slots
+4. attacking and movement
+5. change of attributes based on slot type
+7. player status report
