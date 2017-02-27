@@ -17,7 +17,7 @@ struct players{
 	unsigned int hp;		//Player life points
 	unsigned int magic;		//Player magic skills
 	unsigned int smart;		//Player smartness
-	unsigned int strenght;	//Player strength
+	unsigned int strength;	//Player strength
 	unsigned int dex;		//Player dexterity
 	unsigned int luck;		//Player luck
 
