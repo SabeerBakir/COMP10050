@@ -6,3 +6,4 @@ Tasks:
 4. attacking and movement
 5. change of attributes based on slot type
 7. player status report
+8. #makecodegreatagain
