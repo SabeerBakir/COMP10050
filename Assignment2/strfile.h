@@ -10,7 +10,7 @@
 #define ASIZE 100
 
 //Player Data Structure - stats and names
-struct players{
+struct player{
 
 	char name[ASIZE];		//Player name
 	char class[ASIZE];		//Player class
