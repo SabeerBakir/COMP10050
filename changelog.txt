@@ -1,0 +1,8 @@
+================================================
+------- COMP10050 PROJECT 1 ASSIGNMENT 2 -------
+================================================
+
+			******CHANGELOG******
+
+-	Implemented scanning in player names and storing class (Sabeer Bakir)
+		+ http://stackoverflow.com/questions/1247989/how-do-you-allow-spaces-to-be-entered-using-scanf
