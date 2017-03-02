@@ -23,4 +23,15 @@ struct player{
 
 };
 
+//Slot Data Structure - id and type
+struct slot{
+
+	int id;					//Slot identification number
+	char type[ASIZE];		//Slot type
+
+};
+
+//Character removal function
+void removeChar(char *str, char cremove);
+
 #endif /* STRFILE_H_ */

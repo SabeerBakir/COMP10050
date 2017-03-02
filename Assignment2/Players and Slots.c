@@ -12,25 +12,36 @@ int main(void)
 {
 	setbuf(stdout, NULL);
 
-	struct player players[6];
-	char* class[4] = {"Elf", "Human", "Ogre", "Wizard"};
-	int i;
-	int choice; // choice of variable
+	int playerChoice; // choice of variable
 
 	printf("Welcome to Crossfire!\n");
 
-	for(i = 0; i < 6; i++)
+	int playerNum; // Total Number of Players
+	printf("Choose the number of players (Min: 1\tMax: 6)\n");
+	scanf("%d", &playerNum);
+
+	struct player players[6];
+	char* class[4] = {"Elf", "Human", "Ogre", "Wizard"};
+
+	// Player Setup
+	for(int i = 0; i < playerNum; i++)
 	{
 		printf("Enter the name of player %d: ", i + 1);
-		fgets(players[i].name, ASIZE, stdin);
-		printf("Choose class: \n[1] Elf\n[2] Human\n[3] Ogre\n[4] Wizard\n");
-		scanf("%d", &choice);
-		strcpy(players[i].class, class[choice - 1]);
+		//fgets(players[i].name, ASIZE, stdin);
+		scanf(" %[^\n]", players[i].name);
+		printf("\nChoose class: \n[1] Elf\n[2] Human\n[3] Ogre\n[4] Wizard\n");
+		scanf(" %d", &playerChoice);
+		strcpy(players[i].class, class[playerChoice - 1]);
 	}
 
-	for(i = 0; i < 6; i++)
+//	for(int i = 0; i < playerNum; i++){
+//		removeChar(players[i].name, '\n');
+//		removeChar(players[i].class, '\n');
+//	}
+
+	for(int i = 0; i < playerNum; i++)
 	{
-		printf("%s %10s\n", players[i].name, players[i].class);
+		printf("%s%s\n", players[i].name, players[i].class);
 	}
 
 
@@ -38,4 +49,3 @@ int main(void)
 
 	return 0;
 }
-
