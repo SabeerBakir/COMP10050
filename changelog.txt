@@ -6,3 +6,9 @@
 
 -	Implemented scanning in player names and storing class (Sabeer Bakir)
 		+ http://stackoverflow.com/questions/1247989/how-do-you-allow-spaces-to-be-entered-using-scanf
+		
+-	Updated certain variables to exist only in the necessary functions/loops (Kacper Twardowski)
+
+-	Fixed the player input
+		+ Still working on correct formating
+		+ There appears to be a newline character at the end of the char array for player.name or the start of player.class
