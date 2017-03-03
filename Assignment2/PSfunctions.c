@@ -10,17 +10,20 @@
 #include <time.h>
 #include <stdlib.h>
 #include "strfile.h"
+#define ASIZE 100
 
 void removeChar(char *str, char cremove){
 
 	printf("Removal function entered\n");
 
-	char *pr = str, *pw = str;
-	while(*pr){
-		*pw = *pr++;
-		pw += (*pw != cremove);
-	}
-	*pw = '\0';
+	/*for(size_t i = 0; i < ASIZE; i++){
+		if(str[i] == cremove){
+			printf("found");
+			str[i] = ' ';
+		}
+		printf("%c", str[i]);
+	}*/
 
 	return;
 }
+
