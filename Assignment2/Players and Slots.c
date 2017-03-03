@@ -27,32 +27,24 @@ int main(void)
 	for(int i = 0; i < playerNum; i++)
 	{
 		printf("Enter the name of player %d: ", i + 1);
-		fgets(players[i].name, ASIZE, stdin);
-		char * name = NULL;
-		size_t len;
-		if (getline(&name, &len, stdin) != -1) {
-			strcpy(players[i].name,name);
-		} else {
-			printf("this is error, break your programme!");
-		}
-//		scanf(" %[^\n]", players[i].name);
+		scanf(" %[^\n]", players[i].name);
 		printf("\nChoose class: \n[1] Elf\n[2] Human\n[3] Ogre\n[4] Wizard\n");
 		scanf(" %d", &playerChoice);
 		strcpy(players[i].class, class[playerChoice - 1]);
 	}
 
-	for(int i = 0; i < playerNum; i++){
-		removeChar(players[i].name, '\n');
-		removeChar(players[i].class, '\n');
-	}
-	for(int i = 0; i < playerNum; i++){
-		for(int k = 0; players[i].class[k] != '\0'; k++){
-			if(players[i].class[k] == '\n'){
-				printf("found");
-			}
-			printf("%c ", players[i].class[k]);
-		}
-	}
+//	for(int i = 0; i < playerNum; i++){
+//		removeChar(players[i].name, '\n');
+//		removeChar(players[i].class, '\n');
+//	}
+//	for(int i = 0; i < playerNum; i++){
+//		for(int k = 0; players[i].class[k] != '\0'; k++){
+//			if(players[i].class[k] == '\n'){
+//				printf("found");
+//			}
+//			printf("%c ", players[i].class[k]);
+//		}
+//	}
 
 	for(int i = 0; i < playerNum; i++)
 	{
