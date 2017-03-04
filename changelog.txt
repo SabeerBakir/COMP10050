@@ -12,3 +12,14 @@
 -	Fixed the player input
 		+ Still working on correct formating
 		+ There appears to be a newline character at the end of the char array for player.name or the start of player.class
+
+-	Beginning work on slots(Sabeer Bakir)
+		+ Adding new member to players struct to track the slot the player is on
+		+ Added boolean variable to check if slot is occupied
+		+ Added random tpyes assigned to slots
+		+ Added random slots being assigned to players
+
+-	Putting some code into functions
+		+ slotGenerate
+		+ slotPlayerAssign
+		+ setupPlayer
