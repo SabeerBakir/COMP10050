@@ -46,4 +46,7 @@ void setupPlayer(int playerNum, struct player players[], char* class[]);
 //Prints Dashes
 void printDash(void);
 
+//Assigns Capabilities to Players
+void statsAssign(struct player player[], char* class[]);
+
 #endif /* STRFILE_H_ */
