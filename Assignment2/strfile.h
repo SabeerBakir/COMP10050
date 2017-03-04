@@ -8,6 +8,7 @@
 #ifndef STRFILE_H_
 #define STRFILE_H_
 #define ASIZE 100
+#include <stdbool.h>
 
 //Player Data Structure - stats and names
 struct player{
@@ -20,6 +21,7 @@ struct player{
 	unsigned int strength;	//Player strength
 	unsigned int dex;		//Player dexterity
 	unsigned int luck;		//Player luck
+	int position;			//Player position
 
 };
 
@@ -28,10 +30,20 @@ struct slot{
 
 	int id;					//Slot identification number
 	char type[ASIZE];		//Slot type
+	_Bool occupied;			//Slot occupied (true or false)
 
 };
 
 //Character removal function
 void removeChar(char *str, char cremove);
+
+//Generate slots function
+void slotGenerate(int slotNum, char* slotArray[], struct slot slots[]);
+
+//Assign players to slots
+void slotPlayerAssign(int playerNum, int slotNum, struct player players[], struct slot slots[]);
+
+//Setup Players
+void setupPlayer(int playerNum, struct player players[], char* class[]);
 
 #endif /* STRFILE_H_ */

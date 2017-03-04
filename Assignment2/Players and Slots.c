@@ -5,14 +5,16 @@
  *      Author: Sabeer(16333886) & Kacper(16401636)
  */
 #include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
 #include <string.h>
+#include <stdbool.h>
 #include "strfile.h"
 
 int main(void)
 {
 	setbuf(stdout, NULL);
-
-	int playerChoice; // choice of variable
+	srand(time(NULL)); // Initialise the random number generator
 
 	printf("Welcome to Crossfire!\n");
 
@@ -20,18 +22,22 @@ int main(void)
 	printf("Choose the number of players (Min: 1\tMax: 6)\n");
 	scanf("%d", &playerNum);
 
-	struct player players[6];
-	char* class[4] = {"Elf", "Human", "Ogre", "Wizard"};
+	int slotNum; // Total Number of Slots
+	printf("Choose the number of slots (Min: 1\tMax: 20)\n");
+	scanf("%d", &slotNum);
 
-	// Player Setup
-	for(int i = 0; i < playerNum; i++)
-	{
-		printf("Enter the name of player %d: ", i + 1);
-		scanf(" %[^\n]", players[i].name);
-		printf("\nChoose class: \n[1] Elf\n[2] Human\n[3] Ogre\n[4] Wizard\n");
-		scanf(" %d", &playerChoice);
-		strcpy(players[i].class, class[playerChoice - 1]);
-	}
+	struct player players[playerNum];
+	char* class[4] = {"Elf", "Human", "Ogre", "Wizard"};
+	char* slotTypes[3] = {"Level Ground", "Hill", "City"};
+
+	struct slot slots[slotNum]; //Array of slots
+
+	slotGenerate(slotNum, slotTypes, slots); //Assign random types to slots
+
+	slotPlayerAssign(playerNum, slotNum, players, slots); //Assign players to random slots
+
+	setupPlayer(playerNum, players, class);// Player Setup
+
 
 //	for(int i = 0; i < playerNum; i++){
 //		removeChar(players[i].name, '\n');
@@ -48,7 +54,7 @@ int main(void)
 
 	for(int i = 0; i < playerNum; i++)
 	{
-		printf("%s%s\n", players[i].name, players[i].class);
+		printf("%s %s\n", players[i].name, players[i].class);
 	}
 
 
