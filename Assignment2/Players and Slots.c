@@ -19,12 +19,21 @@ int main(void)
 	printf("Welcome to Crossfire!\n");
 
 	int playerNum; // Total Number of Players
-	printf("Choose the number of players (Min: 1\tMax: 6)\n");
+	printf("Choose the number of players\t(Min: 1\tMax: 6)\n");
 	scanf("%d", &playerNum);
 
 	int slotNum; // Total Number of Slots
-	printf("Choose the number of slots (Min: 1\tMax: 20)\n");
+	printf("Choose the number of slots\t(Min: %d\tMax: 20)\n", playerNum);
 	scanf("%d", &slotNum);
+	if(slotNum < playerNum){
+		slotNum = playerNum;
+		printf("The number of slots has been set to the minimum\n");
+	}
+	if(slotNum > 20){
+		slotNum = 20;
+		printf("The number of slots has been set to the maximum\n");
+	}
+	puts("");
 
 	struct player players[playerNum];
 	char* class[4] = {"Elf", "Human", "Ogre", "Wizard"};
@@ -38,27 +47,15 @@ int main(void)
 
 	setupPlayer(playerNum, players, class);// Player Setup
 
-
-//	for(int i = 0; i < playerNum; i++){
-//		removeChar(players[i].name, '\n');
-//		removeChar(players[i].class, '\n');
-//	}
-//	for(int i = 0; i < playerNum; i++){
-//		for(int k = 0; players[i].class[k] != '\0'; k++){
-//			if(players[i].class[k] == '\n'){
-//				printf("found");
-//			}
-//			printf("%c ", players[i].class[k]);
-//		}
-//	}
-
+	//Displays Player Info
+	puts("All Players:");
 	for(int i = 0; i < playerNum; i++)
 	{
-		printf("%s %s\n", players[i].name, players[i].class);
+		printDash();
+		printf("\n");
+		printf("Player %d\nName: %sClass: %s\n", i+1, players[i].name, players[i].class);
 	}
-
-
-
+	printDash();
 
 	return 0;
 }

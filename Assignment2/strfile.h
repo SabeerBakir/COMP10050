@@ -25,7 +25,7 @@ struct player{
 
 };
 
-//Slot Data Structure - id and type
+//Slot Data Structure - id, type and state
 struct slot{
 
 	int id;					//Slot identification number
@@ -33,9 +33,6 @@ struct slot{
 	_Bool occupied;			//Slot occupied (true or false)
 
 };
-
-//Character removal function
-void removeChar(char *str, char cremove);
 
 //Generate slots function
 void slotGenerate(int slotNum, char* slotArray[], struct slot slots[]);
@@ -45,5 +42,8 @@ void slotPlayerAssign(int playerNum, int slotNum, struct player players[], struc
 
 //Setup Players
 void setupPlayer(int playerNum, struct player players[], char* class[]);
+
+//Prints Dashes
+void printDash(void);
 
 #endif /* STRFILE_H_ */

@@ -9,9 +9,9 @@
 		
 -	Updated certain variables to exist only in the necessary functions/loops (Kacper Twardowski)
 
--	Fixed the player input
+-	Fixed the player input (Kacper Twardowski)
 		+ Still working on correct formating
-		+ There appears to be a newline character at the end of the char array for player.name or the start of player.class
+		+ There appears to be a newline character at the end of the char array for player.name
 
 -	Beginning work on slots(Sabeer Bakir)
 		+ Adding new member to players struct to track the slot the player is on
@@ -23,3 +23,7 @@
 		+ slotGenerate
 		+ slotPlayerAssign
 		+ setupPlayer
+		
+-	Added Random Capabilites Assignment (Kacper Twardowski)
+		+ All the stats were assigned to their struct players[]
+		+ Logic of the modulo operator established using set theory
