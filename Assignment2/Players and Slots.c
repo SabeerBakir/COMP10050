@@ -45,15 +45,19 @@ int main(void)
 
 	slotPlayerAssign(playerNum, slotNum, players, slots); //Assign players to random slots
 
-	setupPlayer(playerNum, players, class);// Player Setup
+	setupPlayer(playerNum, players, class); //Player Setup
+
+
 
 	//Displays Player Info
 	puts("All Players:");
 	for(int i = 0; i < playerNum; i++)
 	{
+		//statsAssign(players[i], class); //Function to assign capabilities
 		printDash();
 		printf("\n");
 		printf("Player %d\nName: %sClass: %s\n", i+1, players[i].name, players[i].class);
+		printf("=== STATS ===\nMagic: %u\nSmartness: %u\nStrength: %u\nDexterity: %u\nLuck: %u\n", players[i].magic, players[i].smart, players[i].strength, players[i].dex, players[i].luck);
 	}
 	printDash();
 
