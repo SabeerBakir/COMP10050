@@ -26,8 +26,7 @@
 		
 -	Added Random Capabilites Assignment (Kacper Twardowski)
 		+ All the stats were assigned to their struct players[]
-		+ I NEED TO FIX THE LOGIC:
-			- HUMANS FIXED
-			- ELFS NEEDS TO BE FIXED
-			- OGRE NEEDS TO BE FIXED
-			- WZRD NEEDS TO BE FIXED
+		+ All values fixed and working
+		
+-	Slots Assignment Fixed (Kacper Twardowski)
+		+ Individua slots are now only assigned to a single player

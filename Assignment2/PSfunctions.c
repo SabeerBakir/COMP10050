@@ -22,16 +22,19 @@ void slotGenerate(int slotNum, char* slotArray[], struct slot slots[])
 	}
 }
 
-void slotPlayerAssign(int playerNum, int slotNum, struct player players[], struct slot slots[]) //TO BE FIXED
+void slotPlayerAssign(int playerNum, int slotNum, struct player players[], struct slot slots[])
 {
 	for(int i = 0; i < slotNum; i++) //Initialise slots as vacant
 	{
 		slots[i].occupied = false;
 	}
 
-	for(int i = 0; i < playerNum; i++) //Assign players to random slots	TO BE FIXED
+	for(int j, i = 0; i < playerNum; i++) //Assign players to random slots
 	{
-		int j = rand()%slotNum;
+		j = rand()%slotNum;
+		while(slots[j].occupied){
+			j = rand()%slotNum;
+		}
 		players[i].position = j;
 		slots[j].occupied = true;
 	}
@@ -49,10 +52,10 @@ void setupPlayer(int playerNum, struct player players[], char* class[])
 		scanf(" %d", &playerChoice);
 		strcpy(players[i].class, class[playerChoice - 1]);
 	}
-	for(int j = 0; j < playerNum; j++){
 
-		statsAssign(players, class); //Function to assign capabilities
-	}
+	statsAssign(players, class); //Assigns random capabilities to players
+
+	return;
 }
 
 void printDash(void){
@@ -65,55 +68,60 @@ void printDash(void){
 
 void statsAssign(struct player player[], char* class[]){
 
-	//Checks what class the specific player has
-	for(unsigned int i = 0; i < 4; i++){
-		if(strcmp(player->class, class[i]) == 0){
-			//Assigns the correct random capabilities to players based on their class
-			switch(i){
-			case 0: //Elf
-				printf("Elf");
-				player->hp = 100;
-				player->luck = rand()%(41)+60;
-				player->smart = rand()%(31)+70;
-				player->strength = rand()%(50)+1;
-				player->magic = rand()%(29)+51;
-				player->dex = rand()%(100)+1;
-				break;
-			case 1: //Human
-				printf("Human");
-				player->hp = 100;
-				player->dex = rand()%(100)+1;
-				player->luck = rand()%(100)+1;
-				if((player->dex+player->luck)>102){
-					player->magic = rand()%(100)+1;
+	for(unsigned int j = 0; j < 6; j++){
+		//Checks what class the specific player has
+		for(unsigned int i = 0; i < 4; i++){
+			if(strcmp(player[j].class, class[i]) == 0){
+				//Assigns the correct random capabilities to players based on their class	Max: [1, 100]
+				switch(i){
+				case 0: //Elf
+					player[j].hp = 100;
+					player[j].luck = rand()%(41)+60;
+					player[j].smart = rand()%(31)+70;
+					player[j].strength = rand()%(50)+1;
+					player[j].magic = rand()%(29)+51;
+					player[j].dex = rand()%(100)+1;
+					break;
+				case 1: //Human
+					player[j].hp = 100;
+					player[j].dex = rand()%(100)+1;
+					player[j].luck = rand()%(100)+1;
+					if((player[j].dex+player[j].luck)>102){
+						player[j].magic = rand()%(100)+1;
+					}
+					else{
+						player[j].magic = rand()%(98)+1;
+					}
+					player[j].smart = rand()%(299-player[j].dex-player[j].luck-player[j].magic-1)+1;
+					if(player[j].smart > 100){ // [1,100]
+						player[j].smart = 100;
+					}
+					player[j].strength = rand()%(299-player[j].dex-player[j].luck-player[j].magic-player[j].smart)+1;
+					if(player[j].strength > 100){ // [1,100]
+						player[j].strength = 100;
+					}
+					break;
+				case 2: //Ogre
+					player[j].hp = 100;
+					player[j].magic = 0;
+					//Max sum of luck and smartness
+					player[j].smart = rand()%(20)+1;
+					player[j].luck = rand()%(50-player[j].smart)+1;
+					player[j].dex = rand()%(21)+80;
+					player[j].strength = rand()%(21)+80;
+					break;
+				case 3: //Wizards
+					player[j].hp = 100;
+					player[j].smart = rand()%(11)+90;
+					player[j].luck = rand()%(51)+50;
+					player[j].magic = rand()%(21)+80;
+					player[j].strength = rand()%(20)+1;
+					player[j].dex = rand()%(100)+1;
+					break;
 				}
-				else{
-					player->magic = rand()%(98)+1;
-				}
-				player->smart = rand()%(299-player->dex-player->luck-player->magic-1)+1;
-				player->strength = rand()%(299-player->dex-player->luck-player->magic-player->smart)+1;
-				break;
-			case 2: //Ogre
-				printf("Ogre");
-				player->hp = 100;
-				player->magic = 0;
-				//Max sum of luck and smartness
-				player->smart = rand()%(20)+1;
-				player->luck = rand()%(50-player->smart)+1;
-				player->dex = rand()%(21)+80;
-				player->strength = rand()%(21)+80;
-				break;
-			case 3: //Wizards
-				printf("Wizards");
-				player->hp = 100;
-				player->smart = rand()%(11)+90;
-				player->luck = rand()%(51)+50;
-				player->magic = rand()%(21)+80;
-				player->strength = rand()%(20)+1;
-				player->dex = rand()%(100)+1;
-				break;
 			}
 		}
 	}
 
+	return;
 }

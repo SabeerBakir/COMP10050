@@ -58,6 +58,7 @@ int main(void)
 		printf("\n");
 		printf("Player %d\nName: %sClass: %s\n", i+1, players[i].name, players[i].class);
 		printf("=== STATS ===\nMagic: %u\nSmartness: %u\nStrength: %u\nDexterity: %u\nLuck: %u\n", players[i].magic, players[i].smart, players[i].strength, players[i].dex, players[i].luck);
+		printf("=== SLOTS ===\nStart: %u\n", players[i].position);
 	}
 	printDash();
 
