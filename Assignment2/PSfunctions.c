@@ -68,13 +68,13 @@ void statsAssign(struct player player[], char* class[]){
 		if(strcmp(player.class, class[i]) == 0){
 			//Assigns the correct random capabilities to players based on their class
 			switch(i){
-			case 0: //Elf	GOTTA FIX THIS
+			case 0: //Elf	FIXED
 				player->hp = 100;
+				player->luck = rand()%(41)+60;
+				player->smart = rand()%(31)+70;
 				player->strength = rand()%(50)+1;
 				player->magic = rand()%(29)+51;
-				player->luck = rand()%(300-60-player.strength-player.magic-70)+60;
-				player->smart = rand()%(300-70-player.strength-player.magic-player.luck)+70;
-				player->dex = rand()%(300-player.strength-player.magic-player.luck-player->smart)+1;
+				player->dex = rand()%(100)+1;
 				break;
 			case 1: //Human	FIXED
 				player->hp = 100;
@@ -89,22 +89,22 @@ void statsAssign(struct player player[], char* class[]){
 				player->smart = rand()%(299-player.dex-player.luck-player.magic-1)+1;
 				player->strength = rand()%(299-player.dex-player.luck-player.magic-player.smart)+1;
 				break;
-			case 2: //Ogre	GOTTA FIX THIS
+			case 2: //Ogre	FIXED
 				player->hp = 100;
 				player->magic = 0;
 				//Max sum of luck and smartness
 				player->smart = rand()%(20)+1;
 				player->luck = rand()%(50-player.smart)+1;
-				player->dex = rand()%(50)+80;
-				player->strength = rand()%(player.dex)+80;
+				player->dex = rand()%(21)+80;
+				player->strength = rand()%(21)+80;
 				break;
-			case 3: //Wizards	GOTTA FIX THIS
+			case 3: //Wizards	FIXED
 				player->hp = 100;
-				player->smart = rand()%(300-50-90-80)+90;
-				player->luck = rand()%(300-50-player.smart-80)+50;
-				player->magic = rand()%(300-player.luck-player.smart-80)+80;
+				player->smart = rand()%(11)+90;
+				player->luck = rand()%(51)+50;
+				player->magic = rand()%(21)+80;
 				player->strength = rand()%(20)+1;
-				player->dex = rand()%(300-player.luck-player.smart-player.magic-player.strength)+1;
+				player->dex = rand()%(100)+1;
 				break;
 			}
 		}
