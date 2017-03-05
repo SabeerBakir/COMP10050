@@ -53,7 +53,7 @@ void setupPlayer(int playerNum, struct player players[], char* class[])
 		strcpy(players[i].class, class[playerChoice - 1]);
 	}
 
-	statsAssign(players, class); //Assigns random capabilities to players
+	statsAssign(players, class, playerNum); //Assigns random capabilities to players
 
 	return;
 }
@@ -66,9 +66,9 @@ void printDash(void){
 
 }
 
-void statsAssign(struct player player[], char* class[]){
+void statsAssign(struct player player[], char* class[], int playerNum){
 
-	for(unsigned int j = 0; j < 6; j++){
+	for(unsigned int j = 0; j < playerNum; j++){
 		//Checks what class the specific player has
 		for(unsigned int i = 0; i < 4; i++){
 			if(strcmp(player[j].class, class[i]) == 0){
@@ -122,6 +122,84 @@ void statsAssign(struct player player[], char* class[]){
 			}
 		}
 	}
-
 	return;
 }
+
+void movePlayer(struct player players[], struct slot slots[],int slotNum,int choice, int i)
+{
+	int direction;
+
+	if((slots[players[i].position - 1].occupied == true) && (slots[players[i].position + 1].occupied == true))
+	{
+		printf("You can't move anywhere.\n");
+		choice = 2;
+	}
+	else if((slots[players[i].position - 1].occupied == true) && (players[i].position == slotNum - 1))
+	{
+		printf("You can't move anywhere.\n");
+		choice = 2;
+	}
+	else if((slots[players[i].position + 1].occupied == true) && (players[i].position == 0))
+	{
+		printf("You can't move anywhere.\n");
+		choice = 2;
+	}
+	else if((slots[players[i].position - 1].occupied == true) || (players[i].position == 0))
+	{
+		slots[players[i].position].occupied = false;
+		players[i].position++;
+		slots[players[i].position].occupied = true;
+		printf("Cannot move left. You have moved to the right.\n");
+	}
+	else if((slots[players[i].position + 1].occupied == true) || (players[i].position == slotNum - 1))
+	{
+		slots[players[i].position].occupied = false;
+		players[i].position--;
+		slots[players[i].position].occupied = true;
+		printf("Cannot move right. You have moved to the left.\n");
+	}
+	else
+	{
+		printf("[1] Left\n[2] Right\n");
+		scanf("%d", &direction);
+		if(direction == 1)
+		{
+			slots[players[i].position].occupied = false;
+			players[i].position--;
+			slots[players[i].position].occupied = true;
+			printf("You have moved to the left.\n");
+		}
+		else if(direction == 2)
+		{
+			slots[players[i].position].occupied = false;
+			players[i].position++;
+			slots[players[i].position].occupied = true;
+			printf("You have moved to the right.\n");
+		}
+	}
+
+}
+
+int endGame(struct player players[], int playerNum)
+{
+	int endgame = 0;
+
+	for(int i = 0; i < playerNum; i++)
+	{
+		if(players[i].hp <= 0)
+		{
+
+		}
+	}
+
+	return endgame;
+}
+
+
+
+
+
+
+
+
+

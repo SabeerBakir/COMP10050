@@ -56,11 +56,31 @@ int main(void)
 		//statsAssign(players[i], class); //Function to assign capabilities
 		printDash();
 		printf("\n");
-		printf("Player %d\nName: %sClass: %s\n", i+1, players[i].name, players[i].class);
+		printf("Player %d\nName: %s\nClass: %s\n", i+1, players[i].name, players[i].class);
 		printf("=== STATS ===\nMagic: %u\nSmartness: %u\nStrength: %u\nDexterity: %u\nLuck: %u\n", players[i].magic, players[i].smart, players[i].strength, players[i].dex, players[i].luck);
 		printf("=== SLOTS ===\nStart: %u\n", players[i].position);
 	}
 	printDash();
 
+	printf("\n=== BEGIN! ===\n");
+
+	int choice;
+
+	for(int i = 0; i < playerNum; i++)
+	{
+		printf("%s: Would you like to: \n[1]Move\n[2]Attack?\n", players[i].name);
+		scanf("%d", &choice);
+
+		if(choice == 1)
+		{
+			movePlayer(players, slots, slotNum, choice, i);
+		}
+		else if(choice == 2)
+		{
+
+		}
+		printDash();
+
+	}
 	return 0;
 }

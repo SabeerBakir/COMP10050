@@ -47,6 +47,13 @@ void setupPlayer(int playerNum, struct player players[], char* class[]);
 void printDash(void);
 
 //Assigns Capabilities to Players
-void statsAssign(struct player player[], char* class[]);
+void statsAssign(struct player player[], char* class[], int playerNum);
+
+//Move Function
+void movePlayer(struct player players[], struct slot slots[], int slotNum, int choice, int i);
+
+//Attack Function
+void attackPlayer(void);
+
 
 #endif /* STRFILE_H_ */
