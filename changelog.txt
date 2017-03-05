@@ -19,7 +19,7 @@
 		+ Added random tpyes assigned to slots
 		+ Added random slots being assigned to players
 
--	Putting some code into functions
+-	Putting some code into functions (Sabeer Bakir)
 		+ slotGenerate
 		+ slotPlayerAssign
 		+ setupPlayer
@@ -29,4 +29,9 @@
 		+ All values fixed and working
 		
 -	Slots Assignment Fixed (Kacper Twardowski)
-		+ Individua slots are now only assigned to a single player
+		+ Individual slots are now only assigned to a single player
+		
+-	Adding Movement Mechanics(Sabeer bakir)
+		+ Movement is limited to one slot
+		+ Cannot move to slots that others are occupying
+		+ Cannot move off the edge of the slots (i.e slots == -1)
