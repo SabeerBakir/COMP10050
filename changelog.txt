@@ -26,4 +26,8 @@
 		
 -	Added Random Capabilites Assignment (Kacper Twardowski)
 		+ All the stats were assigned to their struct players[]
-		+ Logic of the modulo operator established using set theory
+		+ I NEED TO FIX THE LOGIC:
+			- HUMANS FIXED
+			- ELFS NEEDS TO BE FIXED
+			- OGRE NEEDS TO BE FIXED
+			- WZRD NEEDS TO BE FIXED
