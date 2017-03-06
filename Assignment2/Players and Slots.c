@@ -57,8 +57,8 @@ int main(void)
 		printDash();
 		printf("\n");
 		printf("Player %d\nName: %s\nClass: %s\n", i+1, players[i].name, players[i].class);
-		printf("=== STATS ===\nMagic: %u\nSmartness: %u\nStrength: %u\nDexterity: %u\nLuck: %u\n", players[i].magic, players[i].smart, players[i].strength, players[i].dex, players[i].luck);
-		printf("=== SLOTS ===\nStart: %u\n", players[i].position + 1);
+		printf("=== STATS ===\nMagic: %d\nSmartness: %d\nStrength: %d\nDexterity: %d\nLuck: %d\n", players[i].magic, players[i].smart, players[i].strength, players[i].dex, players[i].luck);
+		printf("=== SLOTS ===\nStart: %d\n", players[i].position + 1);
 	}
 	printDash();
 
@@ -75,6 +75,8 @@ int main(void)
 			if(choice == 1)
 			{
 				movePlayer(players, slots, slotNum, choice, i);
+				movePlayerStats(slots, players, slotTypes, i);
+				printf("You are now in slot: %d\n", players[i].position + 1);
 			}
 			else if(choice == 2)
 			{

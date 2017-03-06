@@ -131,17 +131,17 @@ void movePlayer(struct player players[], struct slot slots[],int slotNum,int cho
 
 	if((slots[players[i].position - 1].occupied == true) && (slots[players[i].position + 1].occupied == true))
 	{
-		printf("You can't move anywhere.\n");
+		printf("You can't move anywhere. You must attack!\n");
 		choice = 2;
 	}
 	else if((slots[players[i].position - 1].occupied == true) && (players[i].position == slotNum - 1))
 	{
-		printf("You can't move anywhere.\n");
+		printf("You can't move anywhere. You must attack!\n");
 		choice = 2;
 	}
 	else if((slots[players[i].position + 1].occupied == true) && (players[i].position == 0))
 	{
-		printf("You can't move anywhere.\n");
+		printf("You can't move anywhere. You must attack!\n");
 		choice = 2;
 	}
 	else if((slots[players[i].position - 1].occupied == true) || (players[i].position == 0))
@@ -149,18 +149,18 @@ void movePlayer(struct player players[], struct slot slots[],int slotNum,int cho
 		slots[players[i].position].occupied = false;
 		players[i].position++;
 		slots[players[i].position].occupied = true;
-		printf("Cannot move left. You have moved to the right.\n");
+		printf("Cannot move left. You have moved to the right ( %s ).\n", slots[players[i].position].type);
 	}
 	else if((slots[players[i].position + 1].occupied == true) || (players[i].position == slotNum - 1))
 	{
 		slots[players[i].position].occupied = false;
 		players[i].position--;
 		slots[players[i].position].occupied = true;
-		printf("Cannot move right. You have moved to the left.\n");
+		printf("Cannot move right. You have moved to the left ( %s ).\n", slots[players[i].position].type);
 	}
 	else
 	{
-		printf("[1] Left\n[2] Right\n");
+		printf("[1] Left ( %s )\n[2] Right ( %s )\n", slots[players[i].position - 1].type, slots[players[i].position + 1].type);
 		scanf("%d", &direction);
 		if(direction == 1)
 		{
@@ -199,6 +199,65 @@ int endGame(struct player players[], int playerNum)
 	}
 
 	return endgame;
+}
+
+void movePlayerStats(struct slot slots[], struct player players[], char* slotTypes[], int i)
+{
+	if(strcmp(slots[players[i].position].type, slotTypes[0]) == 0)
+	{
+		printf("Your stats remain unchanged.\n");
+	}
+	else if(strcmp(slots[players[i].position].type, slotTypes[1]) == 0)
+	{
+		if(players[i].dex < 50)
+		{
+			players[i].strength -= 10;
+			statsCheck(&players[i].strength);
+			printf("Lost 10 strength points! You now have %d.\n", players[i].strength);
+		}
+		else if(players[i].dex >= 60)
+		{
+			players[i].strength += 10;
+			statsCheck(&players[i].strength);
+			printf("Gained 10 strength points! You now have %d.\n", players[i].strength);
+		}
+		else
+		{
+			printf("Your stats remain unchanged.\n");
+		}
+	}
+	else if(strcmp(slots[players[i].position].type, slotTypes[2]) == 0)
+	{
+		if(players[i].smart > 60)
+		{
+			players[i].magic += 10;
+			statsCheck(&players[i].magic);
+			printf("Gained 10 magic points! You now have %d.\n", players[i].magic);
+		}
+		else if(players[i].smart <= 50)
+		{
+			players[i].dex -= 10;
+			statsCheck(&players[i].dex);
+			printf("Lost 10 dexterity points! You now have %d.\n", players[i].dex);
+		}
+	}
+}
+
+void statsCheck(int *a)
+{
+	if(*a < 0)
+	{
+		*a = 0;
+	}
+	else if(*a > 100)
+	{
+		*a = 100;
+	}
+	else
+	{
+		//Do nothing
+	}
+	return;
 }
 
 

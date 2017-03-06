@@ -15,12 +15,12 @@ struct player{
 
 	char name[ASIZE];		//Player name
 	char class[ASIZE];		//Player class
-	unsigned int hp;		//Player life points
-	unsigned int magic;		//Player magic skills
-	unsigned int smart;		//Player smartness
-	unsigned int strength;	//Player strength
-	unsigned int dex;		//Player dexterity
-	unsigned int luck;		//Player luck
+	int hp;					//Player life points
+	int magic;				//Player magic skills
+	int smart;				//Player smartness
+	int strength;			//Player strength
+	int dex;				//Player dexterity
+	int luck;				//Player luck
 	int position;			//Player position
 
 };
@@ -57,5 +57,11 @@ void attackPlayer(void);
 
 //Function to determine the end of the game
 int endGame(struct player players[], int playerNum);
+
+//Function to change the player stats when they move to a new slot
+void movePlayerStats(struct slot slots[], struct player players[], char* slotTypes[], int i);
+
+//Function to check if a stat exceeds boundaries (i.e [0, 100])
+void statsCheck(int *a);
 
 #endif /* STRFILE_H_ */
