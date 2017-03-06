@@ -35,3 +35,6 @@
 		+ Movement is limited to one slot
 		+ Cannot move to slots that others are occupying
 		+ Cannot move off the edge of the slots (i.e slots == -1)
+
+-	Added Condition for End Game (Sabeer Bakir)
+		+ Count the number of Dead players and check if that is equal to the total players - 1
