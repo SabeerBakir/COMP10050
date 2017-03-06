@@ -55,5 +55,7 @@ void movePlayer(struct player players[], struct slot slots[], int slotNum, int c
 //Attack Function
 void attackPlayer(void);
 
+//Function to determine the end of the game
+int endGame(struct player players[], int playerNum);
 
 #endif /* STRFILE_H_ */

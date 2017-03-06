@@ -183,13 +183,19 @@ void movePlayer(struct player players[], struct slot slots[],int slotNum,int cho
 int endGame(struct player players[], int playerNum)
 {
 	int endgame = 0;
+	int deadPlayers = 0;
 
 	for(int i = 0; i < playerNum; i++)
 	{
-		if(players[i].hp <= 0)
+		if(players[i].hp == 0)
 		{
-
+			deadPlayers++;
 		}
+	}
+
+	if(deadPlayers == playerNum - 1)
+	{
+		endgame = 1;
 	}
 
 	return endgame;
