@@ -38,3 +38,7 @@
 
 -	Added Condition for End Game (Sabeer Bakir)
 		+ Count the number of Dead players and check if that is equal to the total players - 1
+		
+-	Added stats adjustment to players when they move slots (Sabeer Bakir)
+		+ Included a notification to the player for the stats that are being changed
+		+ Created function to check that the player stats remained in the boundaries
