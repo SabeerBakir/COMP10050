@@ -31,7 +31,7 @@
 -	Slots Assignment Fixed (Kacper Twardowski)
 		+ Individual slots are now only assigned to a single player
 		
--	Adding Movement Mechanics(Sabeer bakir)
+-	Adding Movement Mechanics(Sabeer Bakir)
 		+ Movement is limited to one slot
 		+ Cannot move to slots that others are occupying
 		+ Cannot move off the edge of the slots (i.e slots == -1)
@@ -42,3 +42,12 @@
 -	Added stats adjustment to players when they move slots (Sabeer Bakir)
 		+ Included a notification to the player for the stats that are being changed
 		+ Created function to check that the player stats remained in the boundaries
+		
+-	Added attack logic -- INCOMPLETE -- (Kacper Twardowski)
+		+ Slot detection
+		+ Stat change
+		+ WORK NEEDED ON RIGHT-SLOT ATTACK
+		
+-	Changed the movement logic to account correctly for the need to attack (Kacper Twardowski)
+		+ Bug fixed: new stats are no longer reapplied if the player couldnt move and had to attack
+		+ Bug fixed: the game now remains on that player until he has completed an action
