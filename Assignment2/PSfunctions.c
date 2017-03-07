@@ -294,7 +294,7 @@ void attackPlayer(struct player players[], struct slot slots[], int *choice, int
 		}
 	}
 	if(!playerLeft && playerRight){		// Player to the right
-		printf("You decided to attack the player to your left in slot %d\n", players[i].position+1);
+		printf("You decided to attack the player to your right in slot %d\n", players[i].position+1);
 		for(int k = 0; i < playerNum; i++){
 			if(players[i].position+1 == players[k].position){
 				if(players[k].strength <= 70){
@@ -315,7 +315,7 @@ void attackPlayer(struct player players[], struct slot slots[], int *choice, int
 	if(playerLeft && playerRight){		// Players to both left and right
 		int lrchoice = 0;
 		printf("You have a choice between attacking the player to your left (slot %d) and to your right (slot %d)\n", players[i].position-1, players[i].position+1);
-		printf("[1] Left\n[2] Right\n");
+		printf("[1]Left\n[2]Right\n");
 		scanf("%d", &lrchoice);
 		if(lrchoice == 1){
 			printf("You decided to attack the player to your left in slot %d\n", players[i].position-1);
@@ -337,7 +337,7 @@ void attackPlayer(struct player players[], struct slot slots[], int *choice, int
 			}
 		}
 		if(lrchoice == 2){
-			printf("You decided to attack the player to your left in slot %d\n", players[i].position-1);
+			printf("You decided to attack the player to your right in slot %d\n", players[i].position+1);
 			for(int k = 0; i < playerNum; i++){
 				if(players[i].position+1 == players[k].position){
 					if(players[k].strength <= 70){

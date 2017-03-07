@@ -90,6 +90,9 @@ int main(void)
 			printDash();
 			printf("\n");
 			//printf("P1 HP = %d\nP2 HP = %d\n", players[0].hp, players[1].hp);
+			for(int c = 0; c < playerNum; c++){
+				printf("PL%d HP = %d\n", c+1, players[c].hp);
+			}
 		}
 	}
 	return 0;

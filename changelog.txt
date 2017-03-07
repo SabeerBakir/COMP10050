@@ -47,6 +47,7 @@
 		+ Slot detection
 		+ Stat change
 		+ WORK NEEDED ON RIGHT-SLOT ATTACK
+		+ Graveyard for dead players is NEEDED
 		
 -	Changed the movement logic to account correctly for the need to attack (Kacper Twardowski)
 		+ Bug fixed: new stats are no longer reapplied if the player couldnt move and had to attack
