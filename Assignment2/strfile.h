@@ -50,10 +50,10 @@ void printDash(void);
 void statsAssign(struct player player[], char* class[], int playerNum);
 
 //Move Function
-void movePlayer(struct player players[], struct slot slots[], int slotNum, int choice, int i);
+void movePlayer(struct player players[], struct slot slots[], int slotNum, int *choice, int i);
 
 //Attack Function
-void attackPlayer(void);
+void attackPlayer(struct player players[], struct slot slots[], int *choice, int i, int playerNum);
 
 //Function to determine the end of the game
 int endGame(struct player players[], int playerNum);

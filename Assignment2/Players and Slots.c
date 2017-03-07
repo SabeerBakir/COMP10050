@@ -74,16 +74,22 @@ int main(void)
 
 			if(choice == 1)
 			{
-				movePlayer(players, slots, slotNum, choice, i);
-				movePlayerStats(slots, players, slotTypes, i);
-				printf("You are now in slot: %d\n", players[i].position + 1);
+				movePlayer(players, slots, slotNum, &choice, i);
+				if(choice != 3){
+					movePlayerStats(slots, players, slotTypes, i);
+					printf("You are now in slot: %d\n", players[i].position + 1);
+				}
 			}
-			else if(choice == 2)
+			if(choice == 2)
 			{
-
+				attackPlayer(players, slots, &choice, i, playerNum);
+			}
+			if(choice == 3){
+				i--;
 			}
 			printDash();
 			printf("\n");
+			//printf("P1 HP = %d\nP2 HP = %d\n", players[0].hp, players[1].hp);
 		}
 	}
 	return 0;

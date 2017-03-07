@@ -125,24 +125,24 @@ void statsAssign(struct player player[], char* class[], int playerNum){
 	return;
 }
 
-void movePlayer(struct player players[], struct slot slots[],int slotNum,int choice, int i)
+void movePlayer(struct player players[], struct slot slots[], int slotNum, int *choice, int i)
 {
 	int direction;
 
 	if((slots[players[i].position - 1].occupied == true) && (slots[players[i].position + 1].occupied == true))
 	{
 		printf("You can't move anywhere. You must attack!\n");
-		choice = 2;
+		*choice = 2;
 	}
 	else if((slots[players[i].position - 1].occupied == true) && (players[i].position == slotNum - 1))
 	{
 		printf("You can't move anywhere. You must attack!\n");
-		choice = 2;
+		*choice = 2;
 	}
 	else if((slots[players[i].position + 1].occupied == true) && (players[i].position == 0))
 	{
 		printf("You can't move anywhere. You must attack!\n");
-		choice = 2;
+		*choice = 2;
 	}
 	else if((slots[players[i].position - 1].occupied == true) || (players[i].position == 0))
 	{
@@ -260,9 +260,107 @@ void statsCheck(int *a)
 	return;
 }
 
+void attackPlayer(struct player players[], struct slot slots[], int *choice, int i, int playerNum){
 
+	_Bool playerLeft = false;
+	_Bool playerRight = false;
 
+	if(slots[players[i].position-1].occupied){
+		playerLeft = true;
+		//printf("l = true\n");
+	}
+	if(slots[players[i].position+1].occupied){
+		playerRight = true;
+		//printf("r = true\n");
+	}
 
+	if(playerLeft && !playerRight){		// Player to the left
+		printf("You decided to attack the player to your left in slot %d\n", players[i].position-1);
+		for(int k = 0; i < playerNum; i++){
+			if(players[i].position-1 == players[k].position){
+				if(players[k].strength <= 70){
+					players[k].hp -= (players[k].strength*5)/10;
+					if(players[k].hp <= 0){
+						players[k].hp = 0;
+					}
+				}
+				if(players[k].strength > 70){
+					players[i].hp -= (players[k].strength*3)/10;
+					if(players[i].hp <= 0){
+						players[i].hp = 0;
+					}
+				}
+			}
+		}
+	}
+	if(!playerLeft && playerRight){		// Player to the right
+		printf("You decided to attack the player to your left in slot %d\n", players[i].position+1);
+		for(int k = 0; i < playerNum; i++){
+			if(players[i].position+1 == players[k].position){
+				if(players[k].strength <= 70){
+					players[k].hp -= (players[k].strength*5)/10;
+					if(players[k].hp <= 0){
+						players[k].hp = 0;
+					}
+				}
+				if(players[k].strength > 70){
+					players[i].hp -= (players[k].strength*3)/10;
+					if(players[i].hp <= 0){
+						players[i].hp = 0;
+					}
+				}
+			}
+		}
+	}
+	if(playerLeft && playerRight){		// Players to both left and right
+		int lrchoice = 0;
+		printf("You have a choice between attacking the player to your left (slot %d) and to your right (slot %d)\n", players[i].position-1, players[i].position+1);
+		printf("[1] Left\n[2] Right\n");
+		scanf("%d", &lrchoice);
+		if(lrchoice == 1){
+			printf("You decided to attack the player to your left in slot %d\n", players[i].position-1);
+			for(int k = 0; i < playerNum; i++){
+				if(players[i].position-1 == players[k].position){
+					if(players[k].strength <= 70){
+						players[k].hp -= (players[k].strength*5)/10;
+						if(players[k].hp <= 0){
+							players[k].hp = 0;
+						}
+					}
+					if(players[k].strength > 70){
+						players[i].hp -= (players[k].strength*3)/10;
+						if(players[i].hp <= 0){
+							players[i].hp = 0;
+						}
+					}
+				}
+			}
+		}
+		if(lrchoice == 2){
+			printf("You decided to attack the player to your left in slot %d\n", players[i].position-1);
+			for(int k = 0; i < playerNum; i++){
+				if(players[i].position+1 == players[k].position){
+					if(players[k].strength <= 70){
+						players[k].hp -= (players[k].strength*5)/10;
+						if(players[k].hp <= 0){
+							players[k].hp = 0;
+						}
+					}
+					if(players[k].strength > 70){
+						players[i].hp -= (players[k].strength*3)/10;
+						if(players[i].hp <= 0){
+							players[i].hp = 0;
+						}
+					}
+				}
+			}
+		}
+	}
+	if(!playerLeft && !playerRight){	// Not players around
+		printf("There are no players nearby for you to attack, you must move!\n");
+		*choice = 3;
+	}
+}
 
 
 
