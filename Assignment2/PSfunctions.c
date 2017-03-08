@@ -101,7 +101,7 @@ void statsAssign(struct player player[], char* class[], int playerNum){
 						player[j].strength = 100;
 					}
 					break;
-				case 2: //Ogre
+				case 2: //Shrek
 					player[j].hp = 100;
 					player[j].magic = 0;
 					//Max sum of luck and smartness
