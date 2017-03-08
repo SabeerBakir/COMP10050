@@ -67,7 +67,7 @@ int main(void)
 	int choice;
 	while(endGame(players, playerNum) == 0)
 	{
-		for(int i = 0; i < playerNum; i++)
+		for(int i = 0;( i < playerNum) && (players[i].hp > 0); i++)
 		{
 			printf("%s: Would you like to: \n[1]Move\n[2]Attack?\n", players[i].name);
 			scanf("%d", &choice);
