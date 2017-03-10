@@ -364,7 +364,7 @@ void attackPlayer(struct player players[], struct slot slots[], int *choice, int
 			}
 		}
 	}
-	if(!playerLeft && !playerRight){	// Not players around
+	if(!playerLeft && !playerRight){	// No players around
 		printf("There are no players nearby for you to attack, you must move!\n");
 		*choice = 3;
 	}

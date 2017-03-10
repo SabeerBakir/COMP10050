@@ -84,7 +84,7 @@ int main(void)
 			{
 				attackPlayer(players, slots, &choice, i, playerNum);
 			}
-			if(!(choice == 1 || choice == 2)){
+			if(!(choice == 1 || choice == 2)){ // LOGIC ISNT WORKING HERE
 				printf("Please choose again\n");
 				i--;
 			}
