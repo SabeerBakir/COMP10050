@@ -187,7 +187,7 @@ int endGame(struct player players[], int playerNum)
 
 	for(int i = 0; i < playerNum; i++)
 	{
-		if(players[i].hp == 0)
+		if(players[i].hp <= 0)
 		{
 			deadPlayers++;
 		}
@@ -260,16 +260,16 @@ void statsCheck(int *a)
 	return;
 }
 
-void attackPlayer(struct player players[], struct slot slots[], int *choice, int i, int playerNum){
+void attackPlayer(struct player players[], struct slot slots[], int *choice, int i, int playerNum, int slotNum){
 
 	_Bool playerLeft = false;
 	_Bool playerRight = false;
 
-	if(slots[players[i].position-1].occupied){
+	if(slots[players[i].position-1].occupied && players[i].position != 0){
 		playerLeft = true;
 		//printf("l = true\n");
 	}
-	if(slots[players[i].position+1].occupied){
+	if(slots[players[i].position+1].occupied && players[i].position != slotNum - 1){
 		playerRight = true;
 		//printf("r = true\n");
 	}
@@ -322,7 +322,7 @@ void attackPlayer(struct player players[], struct slot slots[], int *choice, int
 		printf("[1]Left\n[2]Right\n");
 		scanf("%d", &lrchoice);
 		if(lrchoice == 1){
-			printf("You decided to attack the player to your left in slot %d\n", players[i].position-1);
+			printf("You decided to attack the player to your left in slot %d\n", players[i].position-1+1);
 			for(int k = 0; k < playerNum; k++){
 				if(players[i].position-1 == players[k].position){
 					if(players[k].strength <= 70){
@@ -375,7 +375,7 @@ void graveyard(struct player players[], struct slot slots[], int dead){
 	//If the player is dead, move him to his own slot in the "Graveyard" and de-occupy his previous slot
 	if(players[dead].hp <= 0){
 		slots[players[dead].position].occupied = false;
-		players[dead].position += 20+dead;
+//		players[dead].position += 20+dead;
 	}
 
 }

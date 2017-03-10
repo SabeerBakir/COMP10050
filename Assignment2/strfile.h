@@ -53,7 +53,7 @@ void statsAssign(struct player player[], char* class[], int playerNum);
 void movePlayer(struct player players[], struct slot slots[], int slotNum, int *choice, int i);
 
 //Attack Function
-void attackPlayer(struct player players[], struct slot slots[], int *choice, int i, int playerNum);
+void attackPlayer(struct player players[], struct slot slots[], int *choice, int i, int playerNum, int slotNum);
 
 //Function to determine the end of the game
 int endGame(struct player players[], int playerNum);
