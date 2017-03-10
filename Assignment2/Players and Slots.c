@@ -84,15 +84,21 @@ int main(void)
 			{
 				attackPlayer(players, slots, &choice, i, playerNum);
 			}
-			if(choice == 3){
+			if(!(choice == 1 || choice == 2)){
+				printf("Please choose again\n");
 				i--;
 			}
 			printDash();
 			printf("\n");
 			//printf("P1 HP = %d\nP2 HP = %d\n", players[0].hp, players[1].hp);
-			/*for(int c = 0; c < playerNum; c++){
-				printf("PL%d HP = %d\n", c+1, players[c].hp);
-			}*/
+			for(int c = 0; c < playerNum; c++){
+				if(players[c].hp <= 0){
+					printf("Player %d is DEAD\n", c+1);
+				}
+				else{
+				printf("Player %d HP = %d\n", c+1, players[c].hp);
+				}
+			}
 		}
 	}
 	return 0;

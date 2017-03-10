@@ -64,4 +64,7 @@ void movePlayerStats(struct slot slots[], struct player players[], char* slotTyp
 //Function to check if a stat exceeds boundaries (i.e [0, 100])
 void statsCheck(int *a);
 
+//Move dead players to a graveyard
+void graveyard(struct player players[], struct slot slots[], int dead);
+
 #endif /* STRFILE_H_ */

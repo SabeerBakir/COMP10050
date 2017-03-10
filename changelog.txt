@@ -52,3 +52,8 @@
 -	Changed the movement logic to account correctly for the need to attack (Kacper Twardowski)
 		+ Bug fixed: new stats are no longer reapplied if the player couldnt move and had to attack
 		+ Bug fixed: the game now remains on that player until he has completed an action
+		
+-	Added a "Graveyard" for dead players
+		+ Death logic added
+		+ Bug fixed: correct player is now attacked (i -> k)
+		+ NEEDS TO BE LOOKED AT: Players and Slots.c line:87

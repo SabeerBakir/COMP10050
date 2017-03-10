@@ -275,38 +275,42 @@ void attackPlayer(struct player players[], struct slot slots[], int *choice, int
 	}
 
 	if(playerLeft && !playerRight){		// Player to the left
-		printf("You decided to attack the player to your left in slot %d\n", players[i].position-1);
-		for(int k = 0; i < playerNum; i++){
+		printf("You decided to attack the player to your left in slot %d\n", players[i].position-1+1);
+		for(int k = 0; k < playerNum; k++){
 			if(players[i].position-1 == players[k].position){
 				if(players[k].strength <= 70){
 					players[k].hp -= (players[k].strength*5)/10;
 					if(players[k].hp <= 0){
 						players[k].hp = 0;
+						graveyard(players, slots, k);
 					}
 				}
 				if(players[k].strength > 70){
 					players[i].hp -= (players[k].strength*3)/10;
 					if(players[i].hp <= 0){
 						players[i].hp = 0;
+						graveyard(players, slots, k);
 					}
 				}
 			}
 		}
 	}
 	if(!playerLeft && playerRight){		// Player to the right
-		printf("You decided to attack the player to your right in slot %d\n", players[i].position+1);
-		for(int k = 0; i < playerNum; i++){
+		printf("You decided to attack the player to your right in slot %d\n", players[i].position+1+1);
+		for(int k = 0; k < playerNum; k++){
 			if(players[i].position+1 == players[k].position){
 				if(players[k].strength <= 70){
 					players[k].hp -= (players[k].strength*5)/10;
 					if(players[k].hp <= 0){
 						players[k].hp = 0;
+						graveyard(players, slots, k);
 					}
 				}
 				if(players[k].strength > 70){
 					players[i].hp -= (players[k].strength*3)/10;
 					if(players[i].hp <= 0){
 						players[i].hp = 0;
+						graveyard(players, slots, k);
 					}
 				}
 			}
@@ -314,42 +318,46 @@ void attackPlayer(struct player players[], struct slot slots[], int *choice, int
 	}
 	if(playerLeft && playerRight){		// Players to both left and right
 		int lrchoice = 0;
-		printf("You have a choice between attacking the player to your left (slot %d) and to your right (slot %d)\n", players[i].position-1, players[i].position+1);
+		printf("You have a choice between attacking the player to your left (slot %d) and to your right (slot %d)\n", players[i].position-1+1, players[i].position+1+1);
 		printf("[1]Left\n[2]Right\n");
 		scanf("%d", &lrchoice);
 		if(lrchoice == 1){
 			printf("You decided to attack the player to your left in slot %d\n", players[i].position-1);
-			for(int k = 0; i < playerNum; i++){
+			for(int k = 0; k < playerNum; k++){
 				if(players[i].position-1 == players[k].position){
 					if(players[k].strength <= 70){
 						players[k].hp -= (players[k].strength*5)/10;
 						if(players[k].hp <= 0){
 							players[k].hp = 0;
+							graveyard(players, slots, k);
 						}
 					}
 					if(players[k].strength > 70){
 						players[i].hp -= (players[k].strength*3)/10;
 						if(players[i].hp <= 0){
 							players[i].hp = 0;
+							graveyard(players, slots, k);
 						}
 					}
 				}
 			}
 		}
 		if(lrchoice == 2){
-			printf("You decided to attack the player to your right in slot %d\n", players[i].position+1);
-			for(int k = 0; i < playerNum; i++){
+			printf("You decided to attack the player to your right in slot %d\n", players[i].position+1+1);
+			for(int k = 0; k < playerNum; k++){
 				if(players[i].position+1 == players[k].position){
 					if(players[k].strength <= 70){
 						players[k].hp -= (players[k].strength*5)/10;
 						if(players[k].hp <= 0){
 							players[k].hp = 0;
+							graveyard(players, slots, k);
 						}
 					}
 					if(players[k].strength > 70){
 						players[i].hp -= (players[k].strength*3)/10;
 						if(players[i].hp <= 0){
 							players[i].hp = 0;
+							graveyard(players, slots, k);
 						}
 					}
 				}
@@ -362,7 +370,12 @@ void attackPlayer(struct player players[], struct slot slots[], int *choice, int
 	}
 }
 
+void graveyard(struct player players[], struct slot slots[], int dead){
 
+	//If the player is dead, move him to his own slot in the "Graveyard" and de-occupy his slot
+	if(players[dead].hp <= 0){
+		slots[players[dead].position].occupied = false;
+		players[dead].position += 20+dead;
+	}
 
-
-
+}
