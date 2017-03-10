@@ -65,8 +65,8 @@ int main(void)
 	printf("\n=== BEGIN! ===\n");
 
 	int choice;
-	while(endGame(players, playerNum) != 1)
-	{
+//	while(endGame(players, playerNum) != 1)
+//	{
 		for(int i = 0;( i < playerNum) && (players[i].hp > 0); i++) // Player must be alive to have a turn
 		{
 			printf("\n%s: Would you like to: \n[1]Move\n[2]Attack?\n", players[i].name);
@@ -84,7 +84,7 @@ int main(void)
 			{
 				attackPlayer(players, slots, &choice, i, playerNum, slotNum);
 			}
-			if(!(choice == 1 || choice == 2)){ // LOGIC ISNT WORKING HERE
+			if(!(choice == 1 || choice == 2)){
 				printf("Please choose again\n");
 				i--;
 			}
@@ -100,6 +100,6 @@ int main(void)
 				}
 			}
 		}
-	}
+//	}
 	return 0;
 }

@@ -375,7 +375,7 @@ void graveyard(struct player players[], struct slot slots[], int dead){
 	//If the player is dead, move him to his own slot in the "Graveyard" and de-occupy his previous slot
 	if(players[dead].hp <= 0){
 		slots[players[dead].position].occupied = false;
-//		players[dead].position += 20+dead;
+		players[dead].position += 30+dead;
 	}
 
 }
